@@ -1,0 +1,1 @@
+# Adlayer javascript integration test
