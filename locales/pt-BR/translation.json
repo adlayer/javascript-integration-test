@@ -1,0 +1,15 @@
+{
+    "page": {
+        "code": {
+			"inserted": "Page code should be inserted",
+			"assesible": "Page code should load and allow access to adlayer lib"
+		}
+    },
+    "connections": {
+        "data": "Should be able to bring page data",
+        "track": "Should be able to track an event",
+    },
+	"spaces": {
+		"find": "Should be able to find all spaces inserted in html"
+	}
+}
