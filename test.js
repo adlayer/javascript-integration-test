@@ -28,7 +28,8 @@
         space_id: 'random',
         page_url: 'http://www.random.com',
         site_id: 'random',
-        page_id: 'random'
+        page_id: 'random',
+        do_not_tracke: true
       };
       return adlayer.track('impression', data, function() {
         return done();
