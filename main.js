@@ -9,6 +9,17 @@
 
 
 
+function loadCss(url_, media_) {
+
+	 var _elstyle = document.createElement("link");
+	 _elstyle.setAttribute("rel", "stylesheet");
+	 _elstyle.setAttribute("type", "text/css");
+	 _elstyle.setAttribute("href", url_);
+
+	 var _head = document.getElementsByTagName("head")[0];
+	 _head.appendChild(_elstyle);
+}
+
 
 var css = {
 	mocha: "https://raw.github.com/visionmedia/mocha/master/mocha.css"
@@ -22,4 +33,5 @@ var scripts = {
 	test: "http://adlayerjavascriptsdk.com/integration-test/test.js"
 }
 
+loadCss(css.mocha);
 head.js(scripts.jquery, scripts.expect, scripts.mocha, scripts.setup, scripts.test);
