@@ -22,10 +22,12 @@ function loadCss(url_, media_) {
 
 
 var css = {
-	mocha: "https://raw.github.com/visionmedia/mocha/master/mocha.css"
+	//mocha: "https://raw.github.com/visionmedia/mocha/master/mocha.css"
+	mocha: "http://adlayerjavascriptsdk.com/integration-test/mocha.css"
 };
 
 var scripts = {
+	jed: "https://raw.github.com/SlexAxton/Jed/master/jed.js",
 	jquery: "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js",
 	expect: "https://raw.github.com/LearnBoost/expect.js/master/expect.js",
 	mocha: "https://raw.github.com/visionmedia/mocha/master/mocha.js",
@@ -34,4 +36,4 @@ var scripts = {
 }
 
 loadCss(css.mocha);
-head.js(scripts.jquery, scripts.expect, scripts.mocha, scripts.setup, scripts.test);
+head.js(scripts.jed, scripts.jquery, scripts.expect, scripts.mocha, scripts.setup, scripts.test);
