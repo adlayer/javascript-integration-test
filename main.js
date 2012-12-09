@@ -28,7 +28,7 @@ var scripts = {
 	jquery: "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js",
 	expect: "https://raw.github.com/LearnBoost/expect.js/master/expect.js",
 	mocha: "https://raw.github.com/visionmedia/mocha/master/mocha.js",
-	setup: "http://adlayerjavascriptsdk.com/integration-test/setup.js",
+	setup: "setup.js",
 	test: "http://adlayerjavascriptsdk.com/integration-test/test.js"
 }
 
