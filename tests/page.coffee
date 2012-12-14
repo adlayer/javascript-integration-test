@@ -1,35 +1,66 @@
+#= require ../javascripts/jquery.js
+#= require ../node_modules/expect.js/expect.js
+#= require ../node_modules/mocha/mocha.js
+#= require ../setup.js
+
 describe 'Page', ->
 	
 	it 'O código da página deve estar inserido no html', (done) ->
-		scriptTag = document.getElementById('adlayerScript')
-		expect(scriptTag).to.be.ok()
+		$scriptTags = jQuery('#adlayerScript').get 0
+		expect($scriptTags).to.be.ok()
 		done()
 		
 	it 'Deve haver apenas um script no html', (done) ->
-		scriptTags = jQuery('#adlayerScript').length
-		expect(adlayer).to.be.ok()
+		scriptTags = jQuery('#adlayerScript')
+		expect(scriptTags.length).to.be(1)
 		done()
 	
 	it 'O código da página deve estar carregado', (done) ->
-		expect(scriptTags.length).to.be(1)
+		expect(adlayer).to.be.ok()
 		done()
 		
 	it 'Script deve expor o id da página e site', (done) ->
-		expect(adlayer.site).to.be.ok()
-		expect(adlayer.page).to.be.ok()
+		scriptTag = document.getElementById 'adlayerScript'
+		lib = adlayer.lib
+		url = scriptTag.src.split '?'
+		queryStr = url[1]
+		query = lib.querystring.parse queryStr
+		
+		expect(query.site).to.be.ok()
+		expect(query.page).to.be.ok()
 		done()
 		
 	it 'A página deve estar cadastrada no Adserver do Adlayer', (done) ->
-		adlayer.adserver.page adlayer.page, (err, res)->
+		query = {
+			domain: window.location.hostname,
+			site_id: adlayer.page.site_id
+		}
+		
+		adlayer.adserver.pages adlayer.page.id, query, (err, res) ->
 			expect(res).to.be.ok()
 			done()
 		
 	it 'Todos os espaços da página devem estar integrados', (done) ->
-		adlayer.adserver.page adlayer.page, (err, res)->
-			expect(res).to.be.ok()
+		query = {
+			domain: window.location.hostname,
+			site_id: adlayer.page.site_id
+		}
+		
+		adlayer.adserver.pages adlayer.page.id, query, (err, res) ->
+			errors = 0;
+			adlayer.page.scanSpaces res.spaces, (err, space) ->
+				if err then errors++
+			
+			expect(errors).to.be 0
 			done()
 		
 	it 'Nenhum código de espaço deve ser duplicado', (done) ->
-		expect(adlayer).to.be.ok()
+		ids = {}
+		duplicated = false
+		
+		jQuery('.adlayer_space').each ()->
+			id = $(this).attr 'id'
+			if ids[id] then duplicated = true else ids[id] = 1
+			
+		expect(duplicated).to.not.be.ok()
 		done()
-	

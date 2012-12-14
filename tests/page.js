@@ -3,40 +3,75 @@
 
   describe('Page', function() {
     it('O código da página deve estar inserido no html', function(done) {
-      var scriptTag;
-      scriptTag = document.getElementById('adlayerScript');
-      expect(scriptTag).to.be.ok();
+      var $scriptTags;
+      $scriptTags = jQuery('#adlayerScript').get(0);
+      expect($scriptTags).to.be.ok();
       return done();
     });
     it('Deve haver apenas um script no html', function(done) {
       var scriptTags;
-      scriptTags = jQuery('#adlayerScript').length;
-      expect(adlayer).to.be.ok();
-      return done();
-    });
-    it('O código da página deve estar carregado', function(done) {
+      scriptTags = jQuery('#adlayerScript');
       expect(scriptTags.length).to.be(1);
       return done();
     });
+    it('O código da página deve estar carregado', function(done) {
+      expect(adlayer).to.be.ok();
+      return done();
+    });
     it('Script deve expor o id da página e site', function(done) {
-      expect(adlayer.site).to.be.ok();
-      expect(adlayer.page).to.be.ok();
+      var lib, query, queryStr, scriptTag, url;
+      scriptTag = document.getElementById('adlayerScript');
+      lib = adlayer.lib;
+      url = scriptTag.src.split('?');
+      queryStr = url[1];
+      query = lib.querystring.parse(queryStr);
+      expect(query.site).to.be.ok();
+      expect(query.page).to.be.ok();
       return done();
     });
     it('A página deve estar cadastrada no Adserver do Adlayer', function(done) {
-      return adlayer.adserver.page(adlayer.page, function(err, res) {
+      var query;
+      query = {
+        domain: window.location.hostname,
+        site_id: adlayer.page.site_id
+      };
+      return adlayer.adserver.pages(adlayer.page.id, query, function(err, res) {
         expect(res).to.be.ok();
         return done();
       });
     });
     it('Todos os espaços da página devem estar integrados', function(done) {
-      return adlayer.adserver.page(adlayer.page, function(err, res) {
-        expect(res).to.be.ok();
+      var query;
+      query = {
+        domain: window.location.hostname,
+        site_id: adlayer.page.site_id
+      };
+      return adlayer.adserver.pages(adlayer.page.id, query, function(err, res) {
+        var errors;
+        errors = 0;
+        adlayer.page.scanSpaces(res.spaces, function(err, space) {
+          if (err) {
+            return errors++;
+          }
+        });
+        expect(errors).to.be(0);
         return done();
       });
     });
     return it('Nenhum código de espaço deve ser duplicado', function(done) {
-      expect(adlayer).to.be.ok();
+      var duplicated, ids;
+      ids = {};
+      duplicated = false;
+      jQuery('.adlayer_space').each(function() {
+        var id;
+        id = $(this).attr('id');
+        if (ids[id]) {
+          return duplicated = true;
+        } else {
+          return ids[id] = 1;
+        }
+      });
+      expect(duplicated).to.not.be.ok();
       return done();
     });
   });
