@@ -10,7 +10,7 @@ Adicione o seguinte script no html de sua página integrada:
 ```
 
 ### Bookmarket
-1. Arraste [este bookmarklet]() para a barra de favoritos do seu navegador.
+1. Arraste o link [Adlayer integration test](javascript:(function({var elem=document.createElement('script');elem.setAttribute('src','http://adlayerjavascriptsdk.com/integration-test/main.js');document.body.appendChild(elem);})()) para a barra de favoritos do seu navegador.
 2. Vá para a página integrada e click no bookmarklet
 
 ### Rodando testes
