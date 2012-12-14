@@ -1,8 +1,15 @@
 # Adlayer javascript integration test
-This is a small BDD style test suite, writen in Coffee Script (because this is more readable then javascript), and the source code lives on [github](https://github.com/adlayer/javascript-integration-test) and a live version can be found in [adlayerjavascriptsdk.com/integration-test/index.html](http://adlayerjavascriptsdk.com/integration-test/index.html)
+Use este projeto para verificar se sua integração de recursos embedáveis do Adlayer estão devidamente integrados e como corrigir eventuais problemas.
 
-# More tests
-Soon we will add more tests
+## Instalação
+### Script
+Adicione o seguinte script no html de sua página integrada:
 
-# Troubleshooting
-Adlayer Javascript integration tests are writen guided by our [troubleshooting document](#)
+```html
+	  <script src="javascripts/main/main.js"></script>
+```
+
+### Bookmarket
+Arraste [este bookmarklet]() para a barra de favoritos do seu navegador.
+
+### Rodando testes
