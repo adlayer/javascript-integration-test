@@ -1,0 +1,1 @@
+s3cmd put --acl-public --recursive index.html javascripts main.js mocha.css stylessheets templates tests s3://integration.adlayerjavascriptsdk.com
