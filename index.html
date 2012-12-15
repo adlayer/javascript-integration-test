@@ -2,10 +2,74 @@
 	<head>
 	  <meta charset="utf-8" />
 	  <title>Adlayer Javascript Integration Test</title>
-	  <script src="javascripts/yepnope.js"></script>
-	  <script src="javascripts/main/main.js"></script>
+	  <link type="text/css" rel="stylesheet" href="stylesheets/foundation.min.css" />
+	  <link type="text/css" rel="stylesheet" href="https://raw.github.com/ccampbell/rainbow/master/themes/tricolore.css" />
+	
+	  <script src="javascripts/jquery.js"></script>
 	</head>
 
-	<body></body>
+	<body>
+		<div class="row">
+			<div class="twelve columns">
+				<h2>
+					<a href="/">
+						<img alt="logo" src="http://adlayer.com.br/img/logo.png" />
+						<br />
+						Javascript Integration Test
+						</a>
+				</h2>
+				<p>
+					Test your Adlayer widget integration
+				</p>
+				<hr>
+			</div>
+		</div>
+		<div id="adlayer_js_test" class="row">
+			<div class="eight columns">
+				<h3>
+					Bookmarklet
+				</h3>
+				<p>
+					<ol>
+						<li>
+							Just drag the 
+							<strong>
+							<a href="javascript:(function(){var elem=document.createElement('script');elem.setAttribute('src','http://integration.adlayerjavascriptsdk.com/main.js');document.body.appendChild(elem);})()">Adlayer Integration Test</a>
+							</strong>
+							to your bookmarks bar</li>
+						<li>Go to the integrated page</li>
+						<li>Click on bookmarklet item</li>
+					</ol>
+				</p>
+				
+				<h3>
+					Script
+				</h3>
+				<p>
+					<ol>
+						<li>
+							Insert folling script in the html of integrated page:
+							<pre><code data-language="html">&lt;script src=&quot;http://integration.adlayerjavascriptsdk.com/main.js&quot;&gt;&lt;/script&gt;</code></pre>
+						</li>
+						<li>Refresh the page (Command + R or F5)</li>
+					</ol>
+					See a <a href="example.html">live example</a>
+				</p>
+				
+				<h3>
+					Running Tests
+				</h3>
+				<p>
+					<ol>
+						<li>Select the type of integration you wanna test</li>
+						<li>Click on "Run" button inside selected tab</li>
+						<li>Check the reports, if any test do not pass (red), there's something wrong with our integration *'</li>
+					</ol>
+					* If all tests are green, you did a good job and your integration is working perfectly
+				</p>
+			</div>
+		</div>
+	  <script src="javascripts/rainbow-custom.min.js"></script>
+	</body>
 	
 </html>
