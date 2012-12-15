@@ -1,6 +1,7 @@
 #= require ../yepnope.js
 
-prefix = 'http://localhost/javascript-integration-test/'
+#prefix = 'http://localhost/javascript-integration-test/'
+prefix = 'http://integration.adlayerjavascriptsdk.com/'
 
 yepnope 
 	load: [
