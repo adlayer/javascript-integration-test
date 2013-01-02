@@ -1,7 +1,7 @@
 #= require ../yepnope.js
 
-#prefix = 'http://localhost/javascript-integration-test/'
-prefix = 'http://integration.adlayerjavascriptsdk.com/'
+prefix = 'http://localhost/javascript-integration-test/'
+#prefix = 'http://integration.adlayerjavascriptsdk.com/'
 
 yepnope 
 	load: [
@@ -15,5 +15,6 @@ yepnope
 		'https://raw.github.com/visionmedia/mocha/master/mocha.js',
 		prefix + 'javascripts/app.js',
 		prefix + 'javascripts/main/setup.js',
-		prefix + 'tests/page.js'
+		prefix + 'tests/page.js',
+		prefix + 'tests/space.js'
 	]

@@ -1,8 +1,3 @@
-#= require ../javascripts/jquery.js
-#= require ../node_modules/expect.js/expect.js
-#= require ../node_modules/mocha/mocha.js
-#= require ../setup.js
-
 describe 'Page', ->
 	
 	it 'O código da página deve estar inserido no html', (done) ->
