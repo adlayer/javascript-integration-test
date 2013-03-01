@@ -3,30 +3,6 @@
 
   mocha.setup('bdd');
 
-  window.onload = function() {
-    return mocha.globals(['jQuery', 'adlayer']);
-  };
-
-  $(function() {
-    var $btRun, $mocha, reset;
-    $('body').prepend(adlayer_template);
-    $mocha = $('#mocha');
-    $btRun = $('#mocha-run');
-    reset = function() {
-      $mocha.html('');
-      return $mocha.prepend($btRun);
-    };
-    $('#mocha-run').live('click', function() {
-      reset();
-      return mocha.run();
-    });
-    return $('#adlayer_js_test .tabs a').click(function() {
-      var target;
-      $mocha.remove();
-      target = $(this).attr('href') + 'Tab';
-      $(target).html($mocha);
-      return reset();
-    });
-  });
+  mocha.globals(['jQuery', 'adlayer']);
 
 }).call(this);

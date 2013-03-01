@@ -1,18 +1,5 @@
-.row
-	div.twelve.columns
-		h2 Teste de integração Adlayer embedável
-		p Clique em "rodar" para iniciar a verificação
-		hr
+script
+	var prefix = 'http://localhost:3000/';
 
-#adlayer_js_test.row
-	div.eight.columns
-		h3 Checklist
-		dl.tabs
-			dd.active
-				a(href="#simple1") Página
-		ul.tabs-content
-			li.active#simple1Tab
-				#mocha
-					button#mocha-run.button Rodar
-			li#simple2Tab empty
-			li#simple3Tab empty
+script(src='../javascripts/yepnope.js')
+script(src='../javascripts/main/main.js')

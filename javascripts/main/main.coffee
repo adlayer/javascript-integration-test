@@ -1,20 +1,27 @@
 #= require ../yepnope.js
 
-prefix = 'http://localhost/javascript-integration-test/'
-#prefix = 'http://integration.adlayerjavascriptsdk.com/'
+prefix = window.prefix || 'http://integration.adlayerjavascriptsdk.com/'
+
+template = """
+			<div id="mocha">
+				<h1>
+					<img src="http://adlayer.com.br/img/logo.png" />
+					<span>JS Integration Test</span>
+				</h1>
+			</div>
+		   """
 
 yepnope 
 	load: [
-		prefix + 'templates/template.js',
-		prefix + 'stylesheets/foundation.min.css',
-		prefix + 'mocha.css',
-		
+		prefix + 'stylesheets/mocha.css',
 		prefix + 'javascripts/jquery.js',
-		prefix + 'javascripts/foundation.min.js',
-		'https://raw.github.com/LearnBoost/expect.js/master/expect.js',
-		'https://raw.github.com/visionmedia/mocha/master/mocha.js',
-		prefix + 'javascripts/app.js',
+		prefix + 'node_modules/expect.js/expect.js',
+		prefix + 'node_modules/mocha/mocha.js',
 		prefix + 'javascripts/main/setup.js',
-		prefix + 'tests/page.js',
-		prefix + 'tests/space.js'
-	]
+		prefix + 'tests/spaces.js',
+		prefix + 'tests/page.js'
+	],
+	complete: () ->
+		$(document).ready () ->
+			$('body').prepend template
+			mocha.run()
